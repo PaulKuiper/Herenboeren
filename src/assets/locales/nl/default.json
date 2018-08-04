@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "login": "Inloggen",
+    "email": "Email",
+    "password": "Wachtwoord",
+    "registration": "Registreren"
+  },
+  "farm_form": {
+    "name": "Naam",
+    "address": "Adres",
+    "city": "Plaats",
+    "save": "Opslaan"
+  }
+}

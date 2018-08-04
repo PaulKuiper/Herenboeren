@@ -1,0 +1,53 @@
+{
+  "name": "Herenboeren",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Herenboeren app",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "devWithSW": "stencil build --dev --service-worker --watch --serve",
+    "start": "stencil build --dev --watch --serve",
+    "test": "jest",
+    "test.watch": "jest --watch"
+  },
+  "dependencies": {
+    "@ionic/core": "^4.0.0-beta.1",
+    "@stencil/core": "^0.10.0",
+    "@types/openlayers": "^4.6.10",
+    "i18next": "^11.5.0",
+    "i18next-browser-languagedetector": "^2.2.3",
+    "i18next-xhr-backend": "^1.5.1",
+    "ol": "^5.0.0",
+    "ole": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.0",
+    "jest": "^23.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/ionic-pwa-toolkit.git"
+  },
+  "author": "Ionic Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil"
+  },
+  "homepage": "https://github.com/ionic-team/ionic-pwa-toolkit",
+  "jest": {
+    "transform": {
+      "^.+\\.(js|ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
+}

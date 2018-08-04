@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "login": "Login",
+    "email": "Username",
+    "password": "Password",
+    "registration": "Registration"
+  },
+    "farm_form": {
+      "name": "Name",
+      "address": "Place",
+      "city": "City",
+      "save": "Save"
+  }
+
+}
