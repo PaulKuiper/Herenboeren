@@ -10,6 +10,7 @@ The framework then opens a webbrowser (@ localhost:8080/)
 
 from gevent import monkey   # enable gevent micro threading
 monkey.patch_all()          # overwrite standard system functions with gevent version
+                            # When debugging with PyCharm: Enable the "Gevent compatible" option !!
 
 import sys
 from os import listdir
