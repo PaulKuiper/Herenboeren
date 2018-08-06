@@ -3,7 +3,7 @@ import {Component, Prop, State} from '@stencil/core';
 
 @Component({
     tag: 'hb-login',
-    styleUrl: 'hb-login.css'
+    styleUrl: 'hb-login.scss'
 })
 export class AppHome {
     @Prop({context: 'i18n'}) private i18n: any;

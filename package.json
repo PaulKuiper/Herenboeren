@@ -24,6 +24,7 @@
     "ole": "0.0.1"
   },
   "devDependencies": {
+    "@stencil/sass": "^0.1.0",
     "@types/jest": "^23.3.0",
     "jest": "^23.4.1"
   },

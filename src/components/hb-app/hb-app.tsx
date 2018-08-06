@@ -3,7 +3,7 @@ import { Component, Prop, Listen } from '@stencil/core';
 
 @Component({
   tag: 'hb-app',
-  styleUrl: 'hb-app.css'
+  styleUrl: 'hb-app.scss'
 })
 export class HbApp {
 
@@ -32,14 +32,22 @@ export class HbApp {
 
   render() {
     return (
-      <ion-app class="ios">
+      <ion-app>
         <ion-router useHash={false}>
-          <ion-route url='/' component='app-home'></ion-route>
-          <ion-route url='/profile/:name' component='app-profile'></ion-route>
+          <ion-route url='/' component='hb-home'></ion-route>
           <ion-route url='/login' component='hb-login'></ion-route>
         </ion-router>
+[
 
-        <ion-nav></ion-nav>
+            <ion-menu side="start">
+                <ion-header translucent>
+                    <ion-toolbar color="secondary">
+                        <ion-title>Menu</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+            </ion-menu>
+        {/*<ion-nav></ion-nav>*/}
+        <ion-router-outlet main></ion-router-outlet>
 
       </ion-app>
     );
