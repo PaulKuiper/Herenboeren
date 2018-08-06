@@ -18,7 +18,7 @@ class Message(Document):
     image = FileField()
     thumb = FileField()
 
-connect(DB_NAME, host='test-euv-dashboard.eu.asml.com', port=27017)
+connect(DB_NAME, host='server', port=27017)
 # msg = Message()
 # msg.nickname = 'test'
 # msg.text = 'test'
