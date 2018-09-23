@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 bottle = "*"
 gevent = "*"
+pydantic = "*"
+inflect = "*"
+simplejson = "*"
 
 [dev-packages]
 

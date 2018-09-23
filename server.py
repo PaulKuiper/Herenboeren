@@ -16,7 +16,7 @@ import sys
 from os import listdir
 from os.path import join, dirname, realpath, isdir
 from fnmatch import fnmatch
-from bottle import Bottle, default_app, run, get, static_file, route
+from bottle import default_app, run, get, static_file, route
 from logging import getLogger
 from importlib import import_module
 
@@ -49,19 +49,20 @@ def import_plugins(path=None, pattern="*.py"):
             import_plugins(join(path, fn), pattern)     # plugin sub directory, search here
         if fnmatch(fn, pattern):            # found a plugin
             module = fn[:-3]                # python module name (strip .py extenion and dir)
-            url, plugin = None, Bottle()    # create a new Bottle app
-            with plugin:                    # install all routes during the import on this app
-                try:
-                    sys.path.append(path)                    # temporarily add this path to the python system path
-                    m = import_module(module)                # import the python module (strip .py extenion)
-                    url = getattr(m, "mount_url", "/")  # fetch the url mount point for this plugin
-                except ImportError as e:
-                    err_msg = "Could not import plugin module:" + fn + "\n" + str(e)
-                    logger.exception(err_msg)           # skip files that do not import properly
-                finally:
-                    del sys.path[-1]        # clean up system path after the import
-
-            if url:
+            url = None    # create a new Bottle app
+            default_app.push()              # install all routes during the import on a new default app
+            try:
+                sys.path.append(path)                    # temporarily add this path to the python system path
+                m = import_module(module)                # import the python module (strip .py extenion)
+                url = getattr(m, "mount_url", f"/{module}/")  # fetch the url mount point for this plugin
+                print(f"mounted: {module}")
+            except ImportError as e:
+                err_msg = "Could not import plugin module:" + fn + "\n" + str(e)
+                logger.exception(err_msg)           # skip files that do not import properly
+            finally:
+                del sys.path[-1]                    # clean up system path after the import
+            plugin = default_app.pop()              # pop the default app with the new routes
+            if url and len(plugin.routes):
                 if url == "/":
                     default_app().merge(plugin)         # merge the plugin with the root app
                 else:

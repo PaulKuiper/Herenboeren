@@ -4,6 +4,7 @@ from bottle import route, get, static_file, default_app
 
 root = join(dirname(dirname(realpath(__file__))), 'www')  # root directory of the static web files
 
+mount_url = "/"
 
 @route('/build/<path:path>')
 def build_url(path):
@@ -12,14 +13,6 @@ def build_url(path):
 @route('/assets/<path:path>')
 def assets_url(path):
     return static_file(path, root=root +'/assets')
-
-
-@route('/')
-@route('/<path:path>')
-def root_url(path=None):
-    return static_file("index.html", root=root)
-
-
 
 @get(['/plugins', '/plugins/'])
 def list_plugins():
@@ -36,3 +29,8 @@ def list_plugins():
         else:
             res[p['module']] = p['error']
     return res
+
+@route('/')
+@route('/<path:path>')
+def root_url(path=None):
+    return static_file("index.html", root=root)
